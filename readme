@@ -9,7 +9,8 @@ JUnit 5.
 json-simple-1.1.1.jar
 
 Running the tests
-junit to test Mycoords.
+junit CoordsTest to test Mycoords.
+class kml to test csv2kml and multicsv.
 
 Built With
 eclipse.

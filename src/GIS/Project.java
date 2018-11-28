@@ -114,7 +114,7 @@ public class Project implements GIS_project{
 	}
 	public String toString() {
 		String s="";
-		s+=Data.toString()+"\n";
+		s+=Data.toString();
 		Iterator<GIS_layer> i=this.iterator();
 		while(i.hasNext()) {
 			s+=i.next().toString();

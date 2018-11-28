@@ -13,7 +13,8 @@ import java.util.Iterator;
 public class Csv2kml {
 	private String csvFile;
 	public Csv2kml(String csvFile) {
-		this.csvFile=csvFile;
+		if(csvFile.charAt(csvFile.length()-1)=='/')this.csvFile=csvFile.substring(0, csvFile.length()-1);
+		else this.csvFile=csvFile;
 	}
 	public String getCsvFile() {
 		return csvFile;
@@ -21,7 +22,7 @@ public class Csv2kml {
 	public void setCsvFile(String csvFile) {
 		this.csvFile=csvFile;
 	}
-	public Document read() {
+	public Document read(String path) {
 		String line = "";
 		String cvsSplitBy = ",";
 
@@ -39,8 +40,8 @@ public class Csv2kml {
 				colP.add(place);
 			}
 			Document doc=new Document();
-			String temp=csvFile.substring(0, csvFile.length()-4);
-			doc.setName(temp);
+			path+=csvFile.substring(csvFile.lastIndexOf("/"), csvFile.length()-4);
+			doc.setName(path);
 			doc.setPlacemark(colP);
 
 			return doc;
@@ -51,8 +52,8 @@ public class Csv2kml {
 		}
 		return null;
 	}
-	public void write() {
-		Document doc=this.read();
+	public void write(String path) {
+		Document doc=this.read(path);
 		PrintWriter pw = null;
 
 		try 

@@ -14,7 +14,7 @@ public class MetaData implements Meta_data{
 		// TODO Auto-generated constructor stub
 		this.UTC=Mdata.getUTC();
 		this.data=Mdata.toString();
-		Orientation=new Point3D(Mdata.get_Orientation());
+		//Orientation=new Point3D(Mdata.get_Orientation());
 	}
 
 	@Override

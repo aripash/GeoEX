@@ -8,19 +8,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
+import File_format.Csv2kml;
 import Geom.Point3D;
 
 public class MultiCSV{
 	private Project proj;
 	private ArrayList<String> csvPath;
 	private static long time;
-	public MultiCSV(String path,String name) {
-		Date currenttime=new Date();
-		time=currenttime.getTime();
+	
+	public MultiCSV(String path) throws IOException {
+		time=new Date().getTime();
 		csvPath=new ArrayList<String>();
+		String name=path.substring(path.lastIndexOf("/"), path.length());
 		MetaData MD=new MetaData(time,name);
 		proj=new Project(MD);
+		search(path);
 	}	
 	public void search(String path) throws IOException {
 		File folder = new File(path);
@@ -29,7 +33,8 @@ public class MultiCSV{
 		MetaData MD=new MetaData(time,csvPath.size()+"");
 		for (File file : listOfFiles) {
 			String f=file.getName();
-			if (f.substring(f.length()-5, f.length()).equalsIgnoreCase(".csv")) {
+			if(file.isDirectory())search(file.getPath());
+			else if (f.substring(f.length()-5, f.length()).equalsIgnoreCase(".csv")) {
 				try{
 					csvPath.add(file.getPath());
 					InputStream inputStream = new FileInputStream(file.getPath()); 
@@ -39,7 +44,7 @@ public class MultiCSV{
 					bufferReader.readLine();
 					String line;
 					String cvsSplitBy = ",";
-					String name=file.getPath().substring(file.getPath().lastIndexOf("//"), file.getPath().length()-5);
+					String name=file.getPath().substring(file.getPath().lastIndexOf("/"), file.getPath().length()-5);
 					MD=new MetaData(time,"name: "+name);
 					Layer lay=new Layer(MD);
 					while ((line = bufferReader.readLine()) != null)   {
@@ -61,10 +66,20 @@ public class MultiCSV{
 					bufferReader.close();
 				}
 			}
-			if(file.isDirectory())search(file.getPath());
 		}
 	}
 	public Project getProject() {
 		return proj;
+	}
+	public ArrayList<String> getcsvPath(){
+		return csvPath;
+	}
+	public void kmlAll(String path) {
+		Iterator<String> i=csvPath.iterator();
+		Csv2kml file;
+		while(i.hasNext()) {
+			file=new Csv2kml(i.next());
+			file.write(path);
+		}
 	}
 }
