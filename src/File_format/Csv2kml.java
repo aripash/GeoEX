@@ -8,20 +8,29 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * this class represents a converter from CSV files to KML files.
+ * read more:
+ * https://en.wikipedia.org/wiki/Comma-separated_values
+ * https://en.wikipedia.org/wiki/Keyhole_Markup_Language
+ *
+ */
 
 public class Csv2kml {
 	private String csvFile;
+	/**
+	 * constructor that receives a string representing a csv file
+	 * @param csvFile
+	 */
 	public Csv2kml(String csvFile) {
 		if(csvFile.charAt(csvFile.length()-1)=='/')this.csvFile=csvFile.substring(0, csvFile.length()-1);
 		else this.csvFile=csvFile;
 	}
-	public String getCsvFile() {
-		return csvFile;
-	}
-	public void setCsvFile(String csvFile) {
-		this.csvFile=csvFile;
-	}
+/**
+ * function is used to read a csv file, split each line by commas and then create a Document object. the Document object will be ready to use
+ * @param path
+ * @return
+ */
 	public Document read(String path) {
 		String line = "";
 		String cvsSplitBy = ",";
@@ -54,6 +63,10 @@ public class Csv2kml {
 		}
 		return null;
 	}
+	/**
+	 * this function receives a csv file path and prints it in kml format
+	 * @param path is a string that represents a csv file path
+	 */
 	public void write(String path) {
 		Document doc=this.read(path);
 		PrintWriter pw = null;
@@ -96,5 +109,15 @@ public class Csv2kml {
 		pw.write(sb.toString());
 		pw.close();
 		System.out.println("done!");
+	}
+	/**
+	 * function should be used to get the original string that represents the csv file
+	 * @return a string that represents the original csv file
+	 */
+	public String getCsvFile() {
+		return csvFile;
+	}
+	private void setCsvFile(String csvFile) {
+		this.csvFile=csvFile;
 	}
 }

@@ -2,7 +2,10 @@ package File_format;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
+/**
+ * this class represents the tags in a kml file and assist in class 'Csv2kml'
+ *
+ */
 @XmlRootElement
 public class Placemark {
 private String name;

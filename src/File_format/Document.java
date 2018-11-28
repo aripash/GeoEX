@@ -4,7 +4,9 @@ import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
+/**
+ *this class is used to represent a KML document and assist in class 'Csv2kml'
+ */
 @XmlRootElement
 public class Document {
 private Collection<Placemark> placemarks;
