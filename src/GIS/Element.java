@@ -8,10 +8,10 @@ public class Element implements GIS_element {
 	private MetaData Data;
 	
 	public Element(Point3D gps) {
-		this.Geom=new Point3D(Geom);
+		this.Geom=new Point3D(gps);
 	}
 	public Element(Point3D gps,Meta_data Data) {
-		this.Geom=new Point3D(Geom);
+		this.Geom=new Point3D(gps);
 		this.Data=new MetaData(Data);
 	}
 	public Element(GIS_element el) {

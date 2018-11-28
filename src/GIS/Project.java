@@ -9,6 +9,7 @@ public class Project implements GIS_project{
 	ArrayList<GIS_layer> layer;
 	public Project() {
 		layer=new ArrayList<GIS_layer>();
+		Data=new MetaData(0,"");
 	}
 
 	public Project(Meta_data Data) {
@@ -113,8 +114,7 @@ public class Project implements GIS_project{
 		return new MetaData(Data);
 	}
 	public String toString() {
-		String s="";
-		s+=Data.toString();
+		String s=Data.toString();
 		Iterator<GIS_layer> i=this.iterator();
 		while(i.hasNext()) {
 			s+=i.next().toString();

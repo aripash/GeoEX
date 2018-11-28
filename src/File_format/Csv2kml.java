@@ -40,7 +40,9 @@ public class Csv2kml {
 				colP.add(place);
 			}
 			Document doc=new Document();
-			path+=csvFile.substring(csvFile.lastIndexOf("/"), csvFile.length()-4);
+			if(csvFile.indexOf("/")==-1)
+			path+=csvFile.substring(csvFile.lastIndexOf("\\")+1, csvFile.length()-4);
+			else path+=csvFile.substring(csvFile.lastIndexOf("/")+1, csvFile.length()-4);
 			doc.setName(path);
 			doc.setPlacemark(colP);
 

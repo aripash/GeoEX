@@ -28,7 +28,7 @@ public class MetaData implements Meta_data{
 		// TODO Auto-generated method stub
 		return new Point3D(Orientation);
 	}
-	public String toSTring() {
+	public String toString() {
 		return data;
 	}
 	public boolean Equals(Meta_data Mdata) {

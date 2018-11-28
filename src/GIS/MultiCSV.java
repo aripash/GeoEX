@@ -22,8 +22,7 @@ public class MultiCSV{
 		time=new Date().getTime();
 		csvPath=new ArrayList<String>();
 		String name=path.substring(path.lastIndexOf("/"), path.length());
-		MetaData MD=new MetaData(time,name);
-		proj=new Project(MD);
+		proj=new Project(new MetaData(time,name));
 		search(path);
 	}	
 	public void search(String path) throws IOException {
@@ -34,7 +33,7 @@ public class MultiCSV{
 		for (File file : listOfFiles) {
 			String f=file.getName();
 			if(file.isDirectory())search(file.getPath());
-			else if (f.substring(f.length()-5, f.length()).equalsIgnoreCase(".csv")) {
+			else if (f.substring(f.length()-4, f.length()).equalsIgnoreCase(".csv")) {
 				try{
 					csvPath.add(file.getPath());
 					InputStream inputStream = new FileInputStream(file.getPath()); 
@@ -44,7 +43,7 @@ public class MultiCSV{
 					bufferReader.readLine();
 					String line;
 					String cvsSplitBy = ",";
-					String name=file.getPath().substring(file.getPath().lastIndexOf("/"), file.getPath().length()-5);
+					String name=file.getPath().substring(file.getPath().lastIndexOf("\\")+1, file.getPath().length()-4);
 					MD=new MetaData(time,"name: "+name);
 					Layer lay=new Layer(MD);
 					while ((line = bufferReader.readLine()) != null)   {
