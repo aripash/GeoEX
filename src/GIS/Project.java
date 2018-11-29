@@ -135,7 +135,8 @@ public class Project implements GIS_project{
 	 * basic function to show project in string form
 	 */
 	public String toString() {
-		String s=Data.toString();
+		String s=Data.getUTC()+" ";
+		s+=Data.toString()+" ";
 		Iterator<GIS_layer> i=this.iterator();
 		while(i.hasNext()) {
 			s+=i.next().toString();

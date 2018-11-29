@@ -46,7 +46,8 @@ public class Element implements GIS_element {
 	 */
 	public String toString() {
 		String s="";
-		s+=Data.toString();
+		s+=Data.getUTC()+" ";
+		s+=Data.toString()+" ";
 		s+=Geom.toString()+"\n";
 		return s;
 	}
