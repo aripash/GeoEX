@@ -13,7 +13,7 @@ public class Kml {
 		no.write("C:/Users/Owner/Downloads/Ex2/Ex2/data/");
 		MultiCSV test=new MultiCSV("C:/Users/Owner/Downloads/Ex2/Ex2");
 		test.kmlAll("C:/Users/Owner/Desktop/");
-	//	System.out.println(test.getProject());
+		System.out.println(test.getProject());
 		System.out.println(test.getcsvPath().toString());
 	}
 

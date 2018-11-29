@@ -9,6 +9,7 @@ import java.util.Iterator;
 public class Project implements GIS_project{
 	private MetaData Data;
 	ArrayList<GIS_layer> layer;
+	
 	public Project() {
 		layer=new ArrayList<GIS_layer>();
 		Data=new MetaData(0,"");
@@ -16,7 +17,7 @@ public class Project implements GIS_project{
 
 	public Project(Meta_data Data) {
 		layer=new ArrayList<GIS_layer>();
-		Data=new MetaData(Data);
+		this.Data=new MetaData(Data);
 	}
 	public Project(GIS_project p) {
 		Data=(MetaData) p.get_Meta_data();

@@ -80,8 +80,8 @@ public class MultiCSV{
 								Double.parseDouble(data[6]),
 								Double.parseDouble(data[8]));
 						String colour;
-						if(data[10].equalsIgnoreCase("GSM")) colour="blue";
-						else  colour="red";
+						if(data[10].equalsIgnoreCase("GSM")) colour="blue ";
+						else  colour="red ";
 						MD=new MetaData(time,"name: "+data[1]+" colour: "+colour);
 						Element el=new Element(Pe,MD);
 						lay.add(el);

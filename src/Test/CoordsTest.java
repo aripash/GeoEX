@@ -78,26 +78,4 @@ class CoordsTest {
 		Point3D gps0=new Point3D(-190.103315,35.209039,670);
 		assertFalse(testC.isValid_GPS_Point(gps0));
 	}
-
-	@Test
-	void validTest1() {
-		MyCoords testC=new MyCoords();
-		char c='z';
-		int x=460;
-		assertTrue(testC.valid(x, c));
-	}
-	@Test
-	void validTest2() {
-		MyCoords testC=new MyCoords();
-		char c='z';
-		int x=-460;
-		assertFalse(testC.valid(x, c));
-	}
-	@Test
-	void validTest3() {
-		MyCoords testC=new MyCoords();
-		char c='g';
-		int x=460;
-		assertFalse(testC.valid(x, c));
-	}
 }

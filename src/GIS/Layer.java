@@ -20,7 +20,7 @@ public class Layer implements GIS_layer{
 	 *constructor that creates a Layer with given MetaData
 	 */
 	public Layer(Meta_data Data) {
-		Data=new MetaData(Data);
+		this.Data=new MetaData(Data);
 		element=new ArrayList<GIS_element>();
 	}
 	/**
